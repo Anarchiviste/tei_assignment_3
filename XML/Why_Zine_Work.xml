@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<!DOCTYPE TEI [<!ENTITY List_Type SYSTEM 'List_type.xml'>]>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Why zines work</title>
+                <!-- It is harde to know where to put links to sources -->
+                <author source="https://www.tumblr.com/ladyfingerpress">
+                    <choice>
+                        <orig>
+                            <persName>
+                                <surname>Stern</surname>
+                                <forename>Morgan</forename>
+                            </persName>
+                        </orig>
+                        <reg>
+                            <addName>Ladyfinger Press</addName>
+                        </reg>
+                    </choice>
+                </author>
+            </titleStmt>
+
+            <editionStmt>
+                <!-- EDITION STATEMENT -->
+                <edition>TEI assignment 2</edition>
+                <respStmt>
+                    <resp>encoded by</resp>
+                    <persName ref="https://github.com/Anarchiviste/TEI-assignment2.git">
+                        <surname>Musquin</surname>
+                        <forename>Jules</forename>
+                    </persName>
+                </respStmt>
+            </editionStmt>
+
+            <publicationStmt>
+                <distributor>
+                    <persName ref="https://github.com/Anarchiviste/TEI-assignment2.git">
+                        <surname>Musquin</surname>
+                        <forename>Jules</forename>
+                    </persName>
+                    <date when="2025-11-15"/>
+                </distributor>
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p>Attribution-NonCommercial-ShareAlike 4.0 International</p>
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier
+                        source="https://archive.org/details/presgone-zine-online/page/n1/mode/2up">
+                        <repository>Internet Archive</repository>
+                        <idno>ark:/13960/s2cgrnk02qs</idno>
+                    </msIdentifier>
+                </msDesc>
+                <listPerson>
+                    <!-- I could have done a separate list of authority, 
+                        but it did not make sens because my others documents will not use it. -->
+                    <person xml:id="Miller" sameAs="https://www.wikidata.org/wiki/Q670658">
+                        <persName>
+                            <forename>George</forename>
+                            <addName>Armitage</addName>
+                            <surname>Miller</surname>
+                        </persName>
+                        <birth>1920-02-03</birth>
+                        <death>2012-07-22</death>
+                        <idno>Q670658</idno>
+                    </person>
+                    <person xml:id="Dawkins" sameAs="http://viaf.org/viaf/12307054">
+                        <!-- Wikidata did not have an authority file for Richard Dawkins so I
+                        used the authority file from Viaf.org-->
+                        <persName>
+                            <forename>Richard</forename>
+                            <surname>Dawkins</surname>
+                        </persName>
+                        <birth>1941-03-26</birth>
+                        <idno>12307054</idno>
+                    </person>
+                    <person xml:id="Rizzolatti" sameAs="https://www.wikidata.org/wiki/Q562048">
+                        <persName>
+                            <forename>Giacomo</forename>
+                            <surname>Rizzolatti</surname>
+                        </persName>
+                        <birth>1937-04-28</birth>
+                        <idno>Q562048</idno>
+                    </person>
+                </listPerson>
+            </sourceDesc>
+        </fileDesc>
+        &List_Type;
+    </teiHeader>
+
+    <text rend="black_ink yellow_paper">
+        <!-- There is no variation in writing and background in this Zine, 
+            so I used my rend attribute only one time on the text element -->
+        <front>
+            <titlePage type="titlepage" n="1" rendition="#printed">
+                <docTitle>
+                    <titlePart type="main">Why zines work</titlePart>
+                </docTitle>
+
+                <docAuthor>
+                    <persName><addName>Ladyfinger</addName></persName>
+                </docAuthor>
+                <docEdition>#90</docEdition>
+
+                <figure>
+                    <figDesc>A printed version of a plan of a Vauban fortress with the letter Z and
+                        the number 7 inscribed inside.</figDesc>
+                </figure>
+
+                <docAuthor>
+                    <persName>
+                        <surname>Stern</surname>
+                        <forename>Morgan</forename>
+                    </persName>
+                </docAuthor>
+            </titlePage>
+        </front>
+        <body>
+            <div1 n="2" rendition="#printed">
+                <head>Why zines work</head>
+                <list>
+                    <item>
+                        <emph>What is a zine ?</emph>
+                        <p>A zine is a booklet <lb/>made by a transgender <lb/>anarchist who doesn't
+                            have <lb/>any other options. <lb/>The Zine is a format <lb/>that's good
+                            at containing <lb/>information. <lb/>A zine is a unit, a thing, <lb/>a
+                            piece of information. <lb/>A zine is, specifically, <lb/>a
+                                <emph>chunk</emph> of information. <lb/>It is made of + 7 smaller
+                            <lb/>chunks of information.</p>
+                        <p>A page folded thrice makes <lb/>for eight portions; six <lb/>smaller
+                            pages and cover : <lb/>this is the classic format.</p>
+                    </item>
+                </list>
+            </div1>
+            <div1 n="2" rendition="#printed">
+                <list>
+                    <item><emph>WHen Doesn't it Work ?</emph>
+                        <p>My last issue was a moment's <lb/>musing about pet play. <lb/>People
+                            liked it! My previous <lb/>was about a much more <lb/>interesting topic
+                            I've been <lb/>researching for a long time, <lb/>and nobody cared.
+                                *<anchor xml:id="footnote1"/></p>
+                        <!-- I used xml:id to create a locator for the footnote, I don't remember why
+                        I did that and how I found that.-->
+                        <p>Why did one work, and the <lb/>other didn't ? I think it was <lb/>the
+                            format. <lb/>I broke the format with the <lb/>flop : it was a double
+                            issue. <lb/>Double was too much ! Even I <lb/>got bored in the middle.
+                            <lb/>I should have listened to
+                                <lb/><persName><surname>Miller</surname></persName> and his famous
+                            laws.</p>
+                    </item>
+                </list>
+                <trailer> * <ptr target="#footnote1"/>
+                    <objectName>#89 Puppygirl &amp; Philosopher</objectName> &amp; <objectName>#87
+                        Synagogue Zodiac Mosaic</objectName>
+                    <!-- I improvised something to link footnotes and their place in the text-->
+                </trailer>
+            </div1>
+            <div1 n="3" rendition="#printed">
+                <list>
+                    <item>
+                        <emph>The Law of Exactly Sevenish</emph>
+                        <p>Seven has been a number of <lb/>magical and cosmic signifiance <lb/>for
+                            all of human history. <lb/>Especially 1956. That's when <lb/><persName
+                                ref="#Miller">George Miller</persName> wrote
+                                    <lb/><emph><objectName>The Magical Number 7,
+                                +2</objectName></emph>. <lb/>The paper exemplains why you can
+                            <lb/>remember a telephone number <lb/>but not a credit card number.</p>
+                        <p>I think <persName ref="#Miller">Miller</persName>'s Law is about more
+                            than just human short<caesura/>term memory. What if it applies not to
+                            just our brains, but information itself ? What if it's part of a
+                                <emph>general information theory</emph> that we don't have yet
+                            ?Regardless, it applies to zines.</p>
+                    </item>
+                </list>
+            </div1>
+            <div1 n="4" rendition="#printed">
+                <list>
+                    <item><emph>The Theory of Memes</emph>
+                        <p>Before it was rare Soyjaks, <emph>the meme was a serious theory by
+                                    <persName ref="#Dawkins">Dawkins</persName> '76. He named
+                                memetics following genetics, including select<caesura/>tion. But his
+                                evolutionary metaphor didn't even apply to evolution. Don't get me
+                                wrong, I like his theory (and evolution.) But <persName
+                                    ref="#Dawkins">Dawkins</persName> called a meme a unit of
+                                culture. Sounds squishy, doesn't it ? Let's call it instead <emph>a
+                                    chunk of information.</emph> Even better, a
+                                    <emph>mirrorable</emph> chunk of information : one that can be
+                                easily repeated. </emph>.</p>
+                    </item>
+                </list>
+                <trailer>For us, by Xerox.</trailer>
+            </div1>
+            <div1 n="5" rendition="#printed">
+                <list>
+                    <item><emph>The Mirroring Section</emph>
+                        <p>I guess that makes this the mirroring section. The mirroring Section. You
+                            may have heard of <emph>mirror neurons</emph>
+                            <caesura/> they're a useful discovery that's become something of a meme
+                            !</p>This is the <emph>monkey see; do</emph> network in your brain. It
+                        means that the Xerox in our brain is essential to learning and being : we
+                        copy, we become. Likewise inform<caesura/>ation copies and becomes.<p/>
+                    </item>
+                </list>
+                <trailer>So what does the mirror network mirror, anyway ? ... "Phenomena ?" I think
+                    it deals in chunks.</trailer>
+            </div1>
+            <div1 n="6" rendition="#printed">
+                <list>
+                    <item><emph>Shrink To Grow</emph>
+                        <p>Notice that you don't have to read <persName ref="#Miller"
+                                >Miller</persName>
+                            <persName ref="#Dawkins">Dawkins</persName> and ... uh, <persName
+                                ref="#Rizzolatti">Rizzolatti</persName> to follow me. That's because
+                            their books compress into my mini-page chunks. The behavior of the
+                            chunkd is what mattered to <persName ref="#Miller">Miller</persName>,
+                            not the number. They <emph>compress, nest, and scale.</emph></p>
+                        <p>Scaling means that the <emph>riot <choice>
+                                    <orig>grrl</orig>
+                                    <corr>girl</corr>
+                                </choice></emph> concept can go from zine idea to cultural Thing. If
+                            copied and shared, the information you're reading could
+                            compress-nest-scale, too. It would no longer be 6 chunks about
+                                        <emph><persName ref="#Miller">Miller</persName>,
+                                mirroring, and memetics.</emph> It would become one idea, a Zine
+                            Theory, told in one word: <emph>zinetics.</emph></p>
+                    </item>
+                </list>
+            </div1>
+        </body>
+        <back n="7" rendition="#printed">
+            <docDate>Z_LXXXX</docDate>
+            <docDate>10Aug2025</docDate>
+            <docAuthor>
+                <persName>
+                    <forename>Morgan</forename>
+                    <surname>Stern</surname>
+                </persName>
+            </docAuthor>
+            <head>THE FORMAT (that functions)</head>
+            <list>
+                <item>I. A zine is one page with zevenish parts.</item>
+                <item>II. A zine is black and white.</item>
+                <item>III. A zine is cheap or free.</item>
+                <item>IV. A zine photocopies easily.</item>
+            </list>
+            <head>THE FILLING (that fucks)</head>
+            <list>
+                <item>A zine does not sell cheeseburgers.</item>
+                <item>A zine is small, below and against.</item>
+            </list>
+            <div1 rendition="#printed" rend="black_ink white_background">
+                <p>morganstern.33 on <orgName>Signal</orgName></p>
+                <p source="ladyfingerpress.tumbler.com">ladyfingerpress.tumbler.com</p>
+            </div1>
+        </back>
+    </text>
+</TEI>
