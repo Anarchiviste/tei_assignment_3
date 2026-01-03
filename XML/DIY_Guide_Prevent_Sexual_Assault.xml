@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<?xml-model href="../out/tei_zine_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 
 <!DOCTYPE TEI [<!ENTITY List_Type SYSTEM 'List_type.xml'>]>
 
@@ -52,12 +52,11 @@
                 </msDesc>
             </sourceDesc>
         </fileDesc>
-        &List_Type;
     </teiHeader>
 
     <text>
         <front>
-            <titlePage type="titlepage" n="1" rendition="#printed">
+            <titlePage type="titlepage" n="1" rendition="printed">
                 <docTitle rend="black_ink white_background">
                     <titlePart type="main">A d.i.y guide to <lb/>preventing sexual
                         <lb/>assault</titlePart>
@@ -71,8 +70,8 @@
             </titlePage>
         </front>
         <body>
-            <div1 n="2">
-                <quote rendition="#printed" rend="black_ink white_background">"Once a girl knows I'm
+            <div1 n="1">
+                <quote rendition="printed" rend="black_ink white_background">"Once a girl knows I'm
                     going to <lb/>listen to a <emph>no</emph>, she knows I'm <lb/>going to listen a
                         <emph>yes</emph>, too. <lb/>That <emph>yes</emph> is a really nice thing
                     <lb/>to hear when she means it. Not <lb/>just about sex...About
@@ -82,11 +81,11 @@
                         <figDesc>A black and white printed picture of a young man</figDesc>
                     </figure>
                 </div2>
-                <trailer rendition="#manuscript" rend="black_ink white_background"> It is up <lb/>to
+                <trailer rendition="manuscript" rend="black_ink white_background"> It is up <lb/>to
                     each of us <lb/>to prevent <lb/>sexual <lb/>assault <lb/>in our
                     <lb/>community</trailer>
             </div1>
-            <div1 n="3" rendition="#manuscript" rend="black_ink white_background">
+            <div1 n="3" rendition="manuscript" rend="black_ink white_background">
                 <head>Help a survivor</head>
                 <list>
                     <!-- Item are an automatic line reset so I didn't use <lb/> at the beginning of an item -->
@@ -109,7 +108,7 @@
                     </address> Make your community aware of <lb/>the resources in your area.
                 </trailer>
             </div1>
-            <div1 n="4" rendition="#printed" rend="black_ink white_background">
+            <div1 n="4" rendition="printed" rend="black_ink white_background">
                 <head>What to do if... <lb/>you or a friend are <lb/>sexually assaulted</head>
                 <list>
                     <item>Go to a safe place. With people <lb/>you feel comfortable with.</item>
@@ -127,7 +126,7 @@
                         <lb/>you can to help.</item>
                 </list>
             </div1>
-            <div1 n="5" rendition="#manuscript" rend="black_ink white_background">
+            <div1 n="5" rendition="manuscript" rend="black_ink white_background">
                 <p>Spread equality !</p>
                 <div2>
                     <figure>
@@ -136,7 +135,7 @@
                     </figure>
                 </div2>
             </div1>
-            <div1 n="6" rendition="#printed" rend="black_ink white_background">
+            <div1 n="6" rendition="printed" rend="black_ink white_background">
                 <div2>
                     <head>Take care of yourself</head>
                     <p><lb/>- Communicate with your partner. Ask <lb/> questions to make sure the
@@ -180,7 +179,7 @@
                     </figure>
                 </div2>
             </div1>
-            <div1 n="7" rendition="#printed" rend="black_ink white_background">
+            <div1 n="7" rendition="printed" rend="black_ink white_background">
                 <div2>
                     <div3>
                         <head>WHAT IS SEXUAL ASSAULT ?</head>

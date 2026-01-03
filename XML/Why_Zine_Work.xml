@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-
-<!DOCTYPE TEI [<!ENTITY List_Type SYSTEM 'List_type.xml'>]>
-
+<?xml-model href="../out/tei_zine_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
     <teiHeader>
         <fileDesc>
             <titleStmt>
                 <title>Why zines work</title>
-                <!-- It is harde to know where to put links to sources -->
+                <!-- It is hard to know where to put links to sources -->
                 <author source="https://www.tumblr.com/ladyfingerpress">
                     <choice>
                         <orig>
@@ -93,14 +89,13 @@
                 </listPerson>
             </sourceDesc>
         </fileDesc>
-        &List_Type;
     </teiHeader>
 
     <text rend="black_ink yellow_paper">
         <!-- There is no variation in writing and background in this Zine, 
             so I used my rend attribute only one time on the text element -->
         <front>
-            <titlePage type="titlepage" n="1" rendition="#printed">
+            <titlePage type="titlepage" n="1" rendition="printed">
                 <docTitle>
                     <titlePart type="main">Why zines work</titlePart>
                 </docTitle>
@@ -124,7 +119,7 @@
             </titlePage>
         </front>
         <body>
-            <div1 n="2" rendition="#printed">
+            <div1 n="2" rendition="printed">
                 <head>Why zines work</head>
                 <list>
                     <item>
@@ -140,7 +135,7 @@
                     </item>
                 </list>
             </div1>
-            <div1 n="2" rendition="#printed">
+            <div1 n="2" rendition="printed">
                 <list>
                     <item><emph>WHen Doesn't it Work ?</emph>
                         <p>My last issue was a moment's <lb/>musing about pet play. <lb/>People
@@ -157,13 +152,13 @@
                             laws.</p>
                     </item>
                 </list>
-                <trailer> * <ptr target="#footnote1"/>
+                <trailer> * <ptr target="footnote1"/>
                     <objectName>#89 Puppygirl &amp; Philosopher</objectName> &amp; <objectName>#87
                         Synagogue Zodiac Mosaic</objectName>
                     <!-- I improvised something to link footnotes and their place in the text-->
                 </trailer>
             </div1>
-            <div1 n="3" rendition="#printed">
+            <div1 n="3" rendition="printed">
                 <list>
                     <item>
                         <emph>The Law of Exactly Sevenish</emph>
@@ -181,7 +176,7 @@
                     </item>
                 </list>
             </div1>
-            <div1 n="4" rendition="#printed">
+            <div1 n="4" rendition="printed">
                 <list>
                     <item><emph>The Theory of Memes</emph>
                         <p>Before it was rare Soyjaks, <emph>the meme was a serious theory by
@@ -198,7 +193,7 @@
                 </list>
                 <trailer>For us, by Xerox.</trailer>
             </div1>
-            <div1 n="5" rendition="#printed">
+            <div1 n="5" rendition="printed">
                 <list>
                     <item><emph>The Mirroring Section</emph>
                         <p>I guess that makes this the mirroring section. The mirroring Section. You
@@ -212,7 +207,7 @@
                 <trailer>So what does the mirror network mirror, anyway ? ... "Phenomena ?" I think
                     it deals in chunks.</trailer>
             </div1>
-            <div1 n="6" rendition="#printed">
+            <div1 n="6" rendition="printed">
                 <list>
                     <item><emph>Shrink To Grow</emph>
                         <p>Notice that you don't have to read <persName ref="#Miller"
@@ -235,7 +230,7 @@
                 </list>
             </div1>
         </body>
-        <back n="7" rendition="#printed">
+        <back n="7" rendition="printed">
             <docDate>Z_LXXXX</docDate>
             <docDate>10Aug2025</docDate>
             <docAuthor>
@@ -256,7 +251,7 @@
                 <item>A zine does not sell cheeseburgers.</item>
                 <item>A zine is small, below and against.</item>
             </list>
-            <div1 rendition="#printed" rend="black_ink white_background">
+            <div1 n="8" rendition="printed" rend="black_ink white_background">
                 <p>morganstern.33 on <orgName>Signal</orgName></p>
                 <p source="ladyfingerpress.tumbler.com">ladyfingerpress.tumbler.com</p>
             </div1>

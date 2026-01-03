@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+
 
 <!DOCTYPE TEI [<!ENTITY List_Type SYSTEM 'List_type.xml'>]>
 
+<?xml-model href="../out/tei_zine_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
     <teiHeader>
         <fileDesc>
@@ -63,14 +64,11 @@
                 </msDesc>
             </sourceDesc>
         </fileDesc>
-        <!-- I did a exterior list for printed and manuscript type using the rendition element
-        because it was something in common in all my documents.-->
-        &List_Type;
     </teiHeader>
 
     <text>
         <front>
-            <titlePage type="titlepage" n="1" rendition="#manuscript">
+            <titlePage type="titlepage" n="1" rendition="manuscript">
                 <docTitle>
                     <titlePart type="main" rend="purple_ink white_paper" rendition="#manuscript">The
                         president is Gone</titlePart>
@@ -85,7 +83,7 @@
         </front>
 
         <body>
-            <div1 n="2" rendition="#manuscript" rend="purple_ink white_paper">
+            <div1 n="2" rendition="manuscript" rend="purple_ink white_paper">
                 <!-- When the rend is the same on all the page,
                 I used it on the element that englobe all my paragraphes.-->
                 <p>The president<lb/>is gone.</p>
@@ -93,7 +91,7 @@
                 <p>We created a <lb/>world where</p>
                 <p> we didn't need <lb/>these false idols.</p>
             </div1>
-            <div1 n="3" rendition="#manuscript" rend="purple_ink white_paper">
+            <div1 n="3" rendition="manuscript" rend="purple_ink white_paper">
                 <p>The priest is gone.<lb/> The missionaries are <lb/>all gone too.</p>
                 <p>We didn't need them <lb/>telling us what to do.</p>
                 <p>We decided to do some <lb/>thinking for ourselves.</p>
@@ -110,7 +108,7 @@
                 <p><lb/>Got rid of all our bosses,<lb/> we all quit our "jobs"</p>
                 <p><lb/>and realized we could actually find our purpose...</p>
             </div1>
-            <div1 n="4" rendition="#manuscript" rend="purple_ink pink_paper">
+            <div1 n="4" rendition="manuscript" rend="purple_ink pink_paper">
                 <p><lb/>We got <lb/>rid of the <lb/>Landlords ... it</p>
                 <p><lb/>wasn't there land <lb/>to "lord" anyway ...</p>
                 <p><lb/>and we got rid of <lb/>renters too.</p>
@@ -119,7 +117,7 @@
                 <p><lb/>People who get <lb/>to experience our <lb/>world</p>
                 <p><lb/>and not just <lb/>fight to survive it.</p>
             </div1>
-            <div1 n="5" rendition="#manuscript">
+            <div1 n="5" rendition="manuscript">
                 <!-- Here the color change on the same page, so I used my rend attribute on every paragraphe-->
                 <p rend="purple_ink pink_paper"><lb/>So we got rid of <lb/>the corporations.
                     <lb/>That's right.</p>
@@ -141,7 +139,7 @@
                     us ... <lb/>to all of us ...</p>
                 <p rend="purple_ink white_paper"><lb/>Gifts.</p>
             </div1>
-            <div1 n="6" rendition="#manuscript" rend="purple_ink white_paper">
+            <div1 n="6" rendition="manuscript" rend="purple_ink white_paper">
                 <p><lb/>So we got rid <lb/>of the food prices <lb/>and the "cost" of healthcare
                     and</p>
                 <p><lb/>decided to live in <lb/>abundance. We <lb/>stopped putting a <lb/>price tag
@@ -158,7 +156,7 @@
                 <p><lb/>The power of love ... <lb/>creativity ...solidarity</p>
                 <p><lb/>We never once surrendered.</p>
             </div1>
-            <div1 n="7" rendition="#manuscript" rend="purple_ink yellow_paper">
+            <div1 n="7" rendition="manuscript" rend="purple_ink yellow_paper">
                 <p><lb/>So now the hatred <lb/>is gone. <lb/>The silence and <lb/>shame too.</p>
                 <p><lb/>We got rid <lb/>of them; we <lb/>loved to hard !</p>
                 <p><lb/>In the best way <lb/>possible. We <lb/>embodied our truths.</p>
@@ -171,7 +169,7 @@
                     predefined roles.</p>
                 <p><lb/>And we were so <lb/>successful ! <lb/>We still are.</p>
             </div1>
-            <div1 n="8" rendition="#manuscript" rend="purple_ink yellow_paper">
+            <div1 n="8" rendition="manuscript" rend="purple_ink yellow_paper">
                 <p><lb/>And now the <lb/>violence is all <lb/>gone,</p>
                 <p><lb/>and the <lb/>tanks and guns <lb/>are gone too.</p>
                 <p><lb/>The gas is gone, <lb/>the bombs, the <lb/>chemicals they <lb/>dumped into
@@ -181,11 +179,11 @@
                 <p><lb/><emph>Chose life,</emph></p>
                 <p><lb/>Chose love, chose connection <lb/>instead of fear.</p>
             </div1>
-            <div1 n="9" rendition="#manuscript" rend="purple_ink, blue surgical mask">
+            <div1 n="9" rendition="manuscript" rend="purple_ink, blue surgical mask">
                 <p><lb/>We chose <lb/>each other. <lb/>And we still <lb/>do. That's <lb/>how we
                     <lb/>made it so <lb/>far.</p>
             </div1>
-            <div1 n="10" rendition="#manuscript" rend="purple_ink yellow_paper">
+            <div1 n="10" rendition="manuscript" rend="purple_ink yellow_paper">
                 <p><lb/>But we looked <lb/>beyond ourselves <lb/>too and we chose <lb/>the world,
                     again <lb/>as it is, gifts, <lb/>glorious and <lb/>abundant and <lb/>we realized
                     we had <lb/>so much we were <lb/>missing.</p>
@@ -200,7 +198,7 @@
             </div1>
         </body>
         <back>
-            <div1 rendition="#manuscript">
+            <div1 n="11" rendition="manuscript">
                 <p rend="red pencil, white background"><lb/>They may burn our books <lb/>but we will
                     <lb/>still <lb/>write <lb/>more.</p>
                 <div2>
