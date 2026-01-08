@@ -9,9 +9,9 @@ Here is the link to my two previous assignment.
 ### IA statement
 This time I used some generative IA to debug a problem with schematron.
 
-### Assignment I and II
+### Previous Iterations
 
-My assignment II ended up with the use of workaround to counter somes limitation of base TEI. I was looking for a way of encoding the physicality of my documents. Some were handwritten, some printed, and all of them used complex craft between the text and de physicality to create sens (images, colors, techniques of printing).
+The second iteration ended up with the use of workaround to counter somes limitation of base TEI. I was looking for a way of encoding the physicality of my documents. Some were handwritten, some printed, and all of them used complex craft between the text and de physicality to create sens (images, colors, techniques of printing).
 
 Base tei encoding exemple :
 
