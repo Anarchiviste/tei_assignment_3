@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-01-03T21:16:29Z. . 
+Schema generated from ODD source 2026-01-08T20:08:47Z. . 
 TEI Edition: P5 Version 4.9.0. Last updated on 24th January 2025, revision f73186978 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/ 
   
@@ -2495,7 +2495,7 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
    </pattern>
    <define name="tei_zinep">
       <element name="p">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) This rule align the p element with the div1 element [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
          <ref name="tei_zinemacro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -2521,11 +2521,61 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
         </sch:assert>
             </sch:rule>
          </pattern>
-         <ref name="tei_zineatt.global.attributes"/>
+         <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
+         <ref name="tei_zineatt.global.attribute.xmllang"/>
+         <ref name="tei_zineatt.global.attribute.xmlbase"/>
+         <ref name="tei_zineatt.global.attribute.xmlspace"/>
+         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
+         <ref name="tei_zineatt.global.linking.attribute.synch"/>
+         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
+         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
+         <ref name="tei_zineatt.global.linking.attribute.next"/>
+         <ref name="tei_zineatt.global.linking.attribute.prev"/>
+         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
+         <ref name="tei_zineatt.global.linking.attribute.select"/>
+         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
+         <ref name="tei_zineatt.global.rendition.attribute.style"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
+         <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.cmc.attributes"/>
          <ref name="tei_zineatt.declaring.attributes"/>
          <ref name="tei_zineatt.fragmentable.attributes"/>
          <ref name="tei_zineatt.written.attributes"/>
+         <optional>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>manuscript</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
+                        <value>printed</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3411,7 +3461,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
    </define>
    <define name="tei_zinediv1">
       <element name="div1">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Force the n attribute to be an int and define the use of rendition) contains a first-level subdivision of the front, body, or back of a text. [4.1.2. Numbered Divisions]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(level-1 text division) In the Zine encoding project, the div1 element is used to encode each new pages. Div1 can have a @rendition that will encode if the page is printed or manuscript. The @rendition is optionnal because a page can be produced using both technics. In this case, you should add a level of description with the element div2 and @rendition. This rule creat the choice between rendition and manuscript in div1 element. We also added attribute to describe the ink color, the material of the page and the color of the page. [4.1.2. Numbered Divisions]</a:documentation>
          <group>
             <zeroOrMore>
                <choice>
@@ -3459,6 +3509,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             </rng:optional>
          </group>
          <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
          <ref name="tei_zineatt.global.attribute.xmllang"/>
          <ref name="tei_zineatt.global.attribute.xmlbase"/>
          <ref name="tei_zineatt.global.attribute.xmlspace"/>
@@ -3478,14 +3529,6 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="tei_zineatt.declaring.attributes"/>
          <ref name="tei_zineatt.divLike.attributes"/>
          <ref name="tei_zineatt.typed.attributes"/>
-         <attribute name="n">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) Force n to be an int, required at every occurence</a:documentation>
-            <list>
-               <oneOrMore>
-                  <data type="nonNegativeInteger"/>
-               </oneOrMore>
-            </list>
-         </attribute>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
@@ -3501,12 +3544,30 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
                </list>
             </attribute>
          </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
    <define name="tei_zinediv2">
       <element name="div2">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(level-2 text division) contains a second-level subdivision of the front, body, or back of a text. [4.1.2. Numbered Divisions]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(level-2 text division) This rule align the div2 element with the rules for div1 element [4.1.2. Numbered Divisions]</a:documentation>
          <group>
             <zeroOrMore>
                <choice>
@@ -3553,10 +3614,60 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
                </rng:group>
             </rng:optional>
          </group>
-         <ref name="tei_zineatt.global.attributes"/>
+         <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
+         <ref name="tei_zineatt.global.attribute.xmllang"/>
+         <ref name="tei_zineatt.global.attribute.xmlbase"/>
+         <ref name="tei_zineatt.global.attribute.xmlspace"/>
+         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
+         <ref name="tei_zineatt.global.linking.attribute.synch"/>
+         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
+         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
+         <ref name="tei_zineatt.global.linking.attribute.next"/>
+         <ref name="tei_zineatt.global.linking.attribute.prev"/>
+         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
+         <ref name="tei_zineatt.global.linking.attribute.select"/>
+         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
+         <ref name="tei_zineatt.global.rendition.attribute.style"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
+         <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.declaring.attributes"/>
          <ref name="tei_zineatt.divLike.attributes"/>
          <ref name="tei_zineatt.typed.attributes"/>
+         <optional>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>manuscript</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
+                        <value>printed</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3639,7 +3750,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
    </define>
    <define name="tei_zinetitlePage">
       <element name="titlePage">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(align titlePage element on div1 element) contains the title page of a text, appearing within the front or back matter. [4.6. Title Pages]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(title page) In the case of the front page, the div1 element is not required because of the existence of the titlePage element. This rule align the titlePage element with the rule for the div1 element [4.6. Title Pages]</a:documentation>
          <group>
             <zeroOrMore>
                <ref name="tei_zinemodel.global"/>
@@ -3653,6 +3764,7 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
             </zeroOrMore>
          </group>
          <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
          <ref name="tei_zineatt.global.attribute.xmllang"/>
          <ref name="tei_zineatt.global.attribute.xmlbase"/>
          <ref name="tei_zineatt.global.attribute.xmlspace"/>
@@ -3670,14 +3782,6 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
          <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
          <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.typed.attribute.subtype"/>
-         <attribute name="n">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) Force n to be an int, required at every occurence</a:documentation>
-            <list>
-               <oneOrMore>
-                  <data type="nonNegativeInteger"/>
-               </oneOrMore>
-            </list>
-         </attribute>
          <optional>
             <attribute name="rendition">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
@@ -3699,6 +3803,24 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
                <data type="token">
                   <param name="pattern">[^\p{C}\p{Z}]+</param>
                </data>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
             </attribute>
          </optional>
          <empty/>
@@ -3727,39 +3849,67 @@ Sample values include: 1] first-line; 2] first-letter; 3] before; 4] after</a:do
       <element name="titlePart">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(title part) contains a subsection or division of the title of a work, as indicated on a title page. [4.6. Title Pages]</a:documentation>
          <ref name="tei_zinemacro.paraContent"/>
-         <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                      xmlns:s="http://purl.oclc.org/dsdl/schematron"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron">
-            <sch:rule context="tei:front//tei:titlePart">
-               <sch:assert test="@type[1]='main'">
-                    titlePart must include a type attribute that is 'main'
-                  </sch:assert>
-            </sch:rule>
-         </sch:pattern>
-         <ref name="tei_zineatt.global.attributes"/>
+         <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
+         <ref name="tei_zineatt.global.attribute.xmllang"/>
+         <ref name="tei_zineatt.global.attribute.xmlbase"/>
+         <ref name="tei_zineatt.global.attribute.xmlspace"/>
+         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
+         <ref name="tei_zineatt.global.linking.attribute.synch"/>
+         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
+         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
+         <ref name="tei_zineatt.global.linking.attribute.next"/>
+         <ref name="tei_zineatt.global.linking.attribute.prev"/>
+         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
+         <ref name="tei_zineatt.global.linking.attribute.select"/>
+         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
+         <ref name="tei_zineatt.global.rendition.attribute.style"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
+         <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.typed.attribute.subtype"/>
          <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="type"
-                       a:defaultValue="main">
-               <a:documentation>(type) specifies the role of this subdivision of the title.
-Suggested values include: 1] main (main); 2] sub (subordinate); 3] alt (alternate); 4] short (short); 5] desc (descriptive)</a:documentation>
-               <choice>
-                  <value>main</value>
-                  <a:documentation>(main) main title of the work</a:documentation>
-                  <value>sub</value>
-                  <a:documentation>(subordinate) subtitle of the work</a:documentation>
-                  <value>alt</value>
-                  <a:documentation>(alternate) alternative title of the work</a:documentation>
-                  <value>short</value>
-                  <a:documentation>(short) abbreviated form of title</a:documentation>
-                  <value>desc</value>
-                  <a:documentation>(descriptive) descriptive paraphrase of the work</a:documentation>
-                  <data type="token">
-                     <param name="pattern">[^\p{C}\p{Z}]+</param>
-                  </data>
-               </choice>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>manuscript</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
+                        <value>printed</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                    name="type"
+                    a:defaultValue="main">
+            <a:documentation>(type) specifies the role of this subdivision of the title.</a:documentation>
+            <choice>
+               <value>main</value>
+               <a:documentation>(main) main title of the work</a:documentation>
+               <value>sub</value>
+               <a:documentation>(subordinate) subtitle of the work</a:documentation>
+            </choice>
+         </attribute>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
             </attribute>
          </optional>
          <empty/>
@@ -3767,11 +3917,61 @@ Suggested values include: 1] main (main); 2] sub (subordinate); 3] alt (alternat
    </define>
    <define name="tei_zinedocAuthor">
       <element name="docAuthor">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(document author) contains the name of the author of the document, as given on the title page (often but not always contained in a byline). [4.6. Title Pages]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(document author) This rule align the docAuthor element with the div1 element [4.6. Title Pages]</a:documentation>
          <ref name="tei_zinemacro.phraseSeq"/>
-         <ref name="tei_zineatt.global.attributes"/>
+         <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
+         <ref name="tei_zineatt.global.attribute.xmllang"/>
+         <ref name="tei_zineatt.global.attribute.xmlbase"/>
+         <ref name="tei_zineatt.global.attribute.xmlspace"/>
+         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
+         <ref name="tei_zineatt.global.linking.attribute.synch"/>
+         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
+         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
+         <ref name="tei_zineatt.global.linking.attribute.next"/>
+         <ref name="tei_zineatt.global.linking.attribute.prev"/>
+         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
+         <ref name="tei_zineatt.global.linking.attribute.select"/>
+         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
+         <ref name="tei_zineatt.global.rendition.attribute.style"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
+         <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.canonical.attributes"/>
          <ref name="tei_zineatt.cmc.attributes"/>
+         <optional>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>manuscript</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
+                        <value>printed</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3793,12 +3993,62 @@ Suggested values include: 1] main (main); 2] sub (subordinate); 3] alt (alternat
    </define>
    <define name="tei_zinedocDate">
       <element name="docDate">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(document date) contains the date of a document, as given on a title page or in a dateline. [4.6. Title Pages]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(document date) This rule align the docDate element with the div1 element [4.6. Title Pages]</a:documentation>
          <ref name="tei_zinemacro.phraseSeq"/>
-         <ref name="tei_zineatt.global.attributes"/>
+         <ref name="tei_zineatt.global.attribute.xmlid"/>
+         <ref name="tei_zineatt.global.attribute.n"/>
+         <ref name="tei_zineatt.global.attribute.xmllang"/>
+         <ref name="tei_zineatt.global.attribute.xmlbase"/>
+         <ref name="tei_zineatt.global.attribute.xmlspace"/>
+         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
+         <ref name="tei_zineatt.global.linking.attribute.synch"/>
+         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
+         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
+         <ref name="tei_zineatt.global.linking.attribute.next"/>
+         <ref name="tei_zineatt.global.linking.attribute.prev"/>
+         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
+         <ref name="tei_zineatt.global.linking.attribute.select"/>
+         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
+         <ref name="tei_zineatt.global.rendition.attribute.style"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
+         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
+         <ref name="tei_zineatt.global.source.attribute.source"/>
          <ref name="tei_zineatt.calendarSystem.attributes"/>
          <ref name="tei_zineatt.cmc.attributes"/>
          <ref name="tei_zineatt.datable.attributes"/>
+         <optional>
+            <attribute name="rendition">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>manuscript</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
+                        <value>printed</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="letter_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the color of an element.</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="material_color">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Specifies the material of an element</a:documentation>
+               <data type="string"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -3857,7 +4107,7 @@ Suggested values include: 1] main (main); 2] sub (subordinate); 3] alt (alternat
    </define>
    <define name="tei_zineback">
       <element name="back">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(align back element on div1 element) contains any appendixes, etc. following the main part of a text. [4.7. Back Matter 4. Default Text Structure]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(back matter) contains any appendixes, etc. following the main part of a text. [4.7. Back Matter 4. Default Text Structure]</a:documentation>
          <group>
             <zeroOrMore>
                <choice>
@@ -3904,49 +4154,8 @@ Suggested values include: 1] main (main); 2] sub (subordinate); 3] alt (alternat
                </rng:group>
             </rng:optional>
          </group>
-         <ref name="tei_zineatt.global.attribute.xmlid"/>
-         <ref name="tei_zineatt.global.attribute.xmllang"/>
-         <ref name="tei_zineatt.global.attribute.xmlbase"/>
-         <ref name="tei_zineatt.global.attribute.xmlspace"/>
-         <ref name="tei_zineatt.global.linking.attribute.corresp"/>
-         <ref name="tei_zineatt.global.linking.attribute.synch"/>
-         <ref name="tei_zineatt.global.linking.attribute.sameAs"/>
-         <ref name="tei_zineatt.global.linking.attribute.copyOf"/>
-         <ref name="tei_zineatt.global.linking.attribute.next"/>
-         <ref name="tei_zineatt.global.linking.attribute.prev"/>
-         <ref name="tei_zineatt.global.linking.attribute.exclude"/>
-         <ref name="tei_zineatt.global.linking.attribute.select"/>
-         <ref name="tei_zineatt.global.rendition.attribute.rend"/>
-         <ref name="tei_zineatt.global.rendition.attribute.style"/>
-         <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
-         <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
-         <ref name="tei_zineatt.global.source.attribute.source"/>
+         <ref name="tei_zineatt.global.attributes"/>
          <ref name="tei_zineatt.declaring.attributes"/>
-         <optional>
-            <attribute name="n">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) Force n to be an int, required at every occurence</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <data type="nonNegativeInteger"/>
-                  </oneOrMore>
-               </list>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="rendition">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to a description of the rendering or presentation used for this element in the source text.</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <choice>
-                        <value>manuscript</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document written by hand or typewritten. Optional if needed to be on a lower level</a:documentation>
-                        <value>printed</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">A document mechanically printed or reproduced in some indirect or automated way. Optional if needed to be on a lower level</a:documentation>
-                     </choice>
-                  </oneOrMore>
-               </list>
-            </attribute>
-         </optional>
          <empty/>
       </element>
    </define>
@@ -4458,7 +4667,7 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei_zine_minimal-msDesc-one_ms_singleton_max-constraint-rule-19">
+                  id="tei_zine_minimal-msDesc-one_ms_singleton_max-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4480,14 +4689,14 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
    </define>
    <define name="tei_zinemsIdentifier">
       <element name="msIdentifier">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript identifier) msIdentifier must have a repository element and a idno element to identified the repository [11.4. The Manuscript Identifier]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(manuscript identifier) As all zine encoded for this project are found online, we force the use of the @source attribute inside the msIdentifier element. In the case that a source cannot be found, then the value no_repository should be used.msIdentifier must have a repository element and a idno element to identified the repository [11.4. The Manuscript Identifier]</a:documentation>
          <group>
             <ref name="tei_zinerepository"/>
             <ref name="tei_zineidno"/>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei_zine_minimal-msIdentifier-msId_minimal-constraint-rule-20">
+                  id="tei_zine_minimal-msIdentifier-msId_minimal-constraint-rule-19">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4515,7 +4724,7 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
          <ref name="tei_zineatt.global.responsibility.attribute.cert"/>
          <ref name="tei_zineatt.global.responsibility.attribute.resp"/>
          <attribute name="source">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Force msIdentifier to put a source, if no sources is available the item no-repository can be declared
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">specifies the source from which some aspect of this element is drawn.
 Suggested values include: 1] no_repository</a:documentation>
             <list>
                <oneOrMore>
@@ -4531,7 +4740,7 @@ Suggested values include: 1] no_repository</a:documentation>
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei_zine_minimal-msIdentifier-source-only_1_ODD_source-constraint-rule-21">
+                  id="tei_zine_minimal-msIdentifier-source-only_1_ODD_source-constraint-rule-20">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:s="http://purl.oclc.org/dsdl/schematron"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -4774,4 +4983,19 @@ Suggested values include: 1] no_repository</a:documentation>
            xmlns:sch="http://purl.oclc.org/dsdl/schematron"
            prefix="sch1x"
            uri="http://www.ascc.net/xml/schematron"/>
+   <s:pattern xmlns="http://www.tei-c.org/ns/1.0"
+              xmlns:s="http://purl.oclc.org/dsdl/schematron">
+      <s:rule context="@n">
+         <s:assert test=". &gt;= 1">The value of @n must be an integer greater than or equal to
+                  1.</s:assert>
+      </s:rule>
+   </s:pattern>
+   <sch:pattern xmlns="http://www.tei-c.org/ns/1.0"
+                xmlns:s="http://purl.oclc.org/dsdl/schematron"
+                xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+      <sch:rule context="tei:docTitle">
+         <sch:assert test="tei:titlePart[1][@type='main']"> The attribut of the first title
+                  must be "main" </sch:assert>
+      </sch:rule>
+   </sch:pattern>
 </grammar>

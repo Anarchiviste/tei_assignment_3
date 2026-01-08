@@ -19,38 +19,20 @@
     <body>
       <head>A Minimal TEI Customization for anglo-saxon Zine encoding</head>
 
-      <p>This TEI ODD defines a TEI customization that is as minimal as possible and the schema
-        generated from it will validate a document that is minimally valid against the TEI scheme.
-        It includes only the ten required elements: <list rend="numbered">
-          <item><gi>teiHeader</gi> from the header module to store required metadata</item>
-          <item><gi>fileDesc</gi> from the header module to record information about this
-            file</item>
-          <item><gi>titleStmt</gi> from the header module to record information about the
-            title</item>
-          <item><gi>publicationStmt</gi> from the header module to detail how it is published</item>
-          <item><gi>sourceDesc</gi> from the header module to record where it is from</item>
-          <item><gi>p</gi> from the core module for use in the header and the body</item>
-          <item><gi>title</gi> from the core module for use in the titleStmt</item>
-          <item><gi>TEI</gi> from the textstructure module because what is a TEI file without
-            that?</item>
-          <item><gi>text</gi> from the textstructure module to hold some text</item>
-          <item><gi>body</gi> from the textstructure module as a place to put that text</item>
-        </list>
-      </p>
       <schemaSpec ident="tei_zine_minimal" start="TEI" prefix="tei_zine" targetLang="en"
-        docLang="en"
-        xmlns:s="http://purl.oclc.org/dsdl/schematron">
+        docLang="en" xmlns:s="http://purl.oclc.org/dsdl/schematron">
 
+        <!-- START OF MODULE CUSTOMISATION -->
         <!-- required minimal header elements -->
         <moduleRef key="header"
           include="teiHeader fileDesc titleStmt publicationStmt sourceDesc availability encodingDesc editionStmt edition distributor licence idno tagsDecl rendition"/>
 
 
-        <!-- required core elements (p and title for use in titleStmt) -->
+        <!-- required core elements -->
         <moduleRef key="core"
           include="p title respStmt resp choice orig reg ref date lb emph quote head list item corr ptr author address"/>
 
-        <!-- required textstructure elements (TEI, text, and body) -->
+        <!-- required textstructure elements -->
         <moduleRef key="textstructure"
           include="TEI text body docTitle titlePage titlePart docAuthor docDate docEdition back imprimatur div div1 div2 div3 trailer front"/>
 
@@ -65,18 +47,17 @@
         <moduleRef key="verse" include="caesura"/>
         <moduleRef key="linking" include="anchor"/>
 
-        <!-- customized elements -->
-
-        <!-- front/back/page n and rendition customisation -->
+        <!-- START OF ELEMENT CUSTOMISATION -->
+        <!-- div1 -->
         <elementSpec ident="div1" mode="change">
-          <gloss>Force the n attribute to be an int and define the use of rendition</gloss>
+          <desc>In the Zine encoding project, the div1 element is used to encode each new pages.
+            Div1 can have a @rendition that will encode if the page is printed or manuscript. The
+            @rendition is optionnal because a page can be produced using both technics. In this
+            case, you should add a level of description with the element div2 and @rendition. This
+            rule creat the choice between rendition and manuscript in div1 element. We also added
+            attribute to describe the ink color, the material of the page and the color of the
+            page.</desc>
           <attList>
-            <attDef ident="n" usage="req" mode="change">
-              <desc>Force n to be an int, required at every occurence</desc>
-              <datatype minOccurs="1" maxOccurs="unbounded">
-                <dataRef key="teidata.count"/>
-              </datatype>
-            </attDef>
             <attDef ident="rendition" usage="opt" mode="change">
               <valList type="closed" mode="replace">
                 <valItem ident="manuscript">
@@ -89,71 +70,78 @@
                 </valItem>
               </valList>
             </attDef>
-          </attList>
-        </elementSpec>
-
-        <elementSpec ident="titlePage" mode="change">
-          <gloss>align titlePage element on div1 element</gloss>
-          <attList>
-            <attDef ident="n" usage="req" mode="change">
-              <desc>Force n to be an int, required at every occurence</desc>
-              <datatype minOccurs="1" maxOccurs="unbounded">
-                <dataRef key="teidata.count"/>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
               </datatype>
             </attDef>
-            <attDef ident="rendition" usage="opt" mode="change">
-              <valList type="closed" mode="replace">
-                <valItem ident="manuscript">
-                  <desc>A document written by hand or typewritten. Optional if needed to be on a
-                    lower level</desc>
-                </valItem>
-                <valItem ident="printed">
-                  <desc>A document mechanically printed or reproduced in some indirect or automated
-                    way. Optional if needed to be on a lower level</desc>
-                </valItem>
-              </valList>
-            </attDef>
-          </attList>
-        </elementSpec>
-
-        <elementSpec ident="back" mode="change">
-          <gloss>align back element on div1 element</gloss>
-          <attList>
-            <attDef ident="n" usage="opt" mode="change">
-              <desc>Force n to be an int, required at every occurence</desc>
-              <datatype minOccurs="1" maxOccurs="unbounded">
-                <dataRef key="teidata.count"/>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
               </datatype>
             </attDef>
-            <attDef ident="rendition" usage="opt" mode="change">
-              <valList type="closed" mode="replace">
-                <valItem ident="manuscript">
-                  <desc>A document written by hand or typewritten. Optional if needed to be on a
-                    lower level</desc>
-                </valItem>
-                <valItem ident="printed">
-                  <desc>A document mechanically printed or reproduced in some indirect or automated
-                    way. Optional if needed to be on a lower level</desc>
-                </valItem>
-              </valList>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
             </attDef>
           </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <div1 n="2" rendition="manuscript" letter_color="purple" material="paper"
+                material_color="white">
+                <p>The president<lb/>is gone.</p>
+                <p>And the vice<lb/>president is gone<lb/> too.</p>
+                <p>We created a <lb/>world where</p>
+                <p> we didn't need <lb/>these false idols.</p>
+              </div1>
+            </egXML>
+          </exemplum>
         </elementSpec>
 
-        <!-- customizsation of msIdentifier element inside sourceDesc -->
+        <!-- schematron customisation for the @n attribute -->
+        <constraintSpec ident="n_range" scheme="schematron">
+          <desc>The zine encoding project choosed that 0 should be excluded from the value of
+            @n</desc>
+          <constraint>
+            <s:pattern xmlns:s="http://purl.oclc.org/dsdl/schematron">
+              <s:rule context="@n">
+                <s:assert test=". >= 1">The value of @n must be an integer greater than or equal to
+                  1.</s:assert>
+              </s:rule>
+            </s:pattern>
+          </constraint>
+        </constraintSpec>
+
+        <!-- rule constraining required elements in msIdentifier and the use of the @source attribute-->
         <elementSpec ident="msIdentifier" mode="change">
+          <desc>As all zine encoded for this project are found online, we force the use of the
+            @source attribute inside the msIdentifier element. In the case that a source cannot be
+            found, then the value no_repository should be used.</desc>
           <attList>
             <attDef ident="source" usage="req" mode="change">
-              <desc>Force msIdentifier to put a source, if no sources is available the item
-                no-repository can be declared</desc>
               <valList type="semi">
                 <valItem ident="no_repository"/>
               </valList>
             </attDef>
           </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <msIdentifier
+                source="https://archive.org/details/presgone-zine-online/page/n1/mode/2up"> ...
+              </msIdentifier>
+            </egXML>
+          </exemplum>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <msIdentifier source="no_repository"> ... </msIdentifier>
+            </egXML>
+          </exemplum>
         </elementSpec>
 
-        <!-- rule constraining elements in a sequence -->
         <elementSpec ident="msIdentifier" mode="change">
           <desc>msIdentifier must have a repository element and a idno element to identified the
             repository</desc>
@@ -163,21 +151,313 @@
               <elementRef key="idno"/>
             </sequence>
           </content>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <msIdentifier
+                source="https://archive.org/details/presgone-zine-online/page/n1/mode/2up">
+                <repository>Internet Archive</repository>
+                <idno>ark:/13960/s2xnb4wz60r</idno>
+              </msIdentifier>
+            </egXML>
+          </exemplum>
         </elementSpec>
 
-        <!-- rule for titlePart verification -->
-        <elementSpec ident="titlePart" module="textstructure" mode="change" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:tei="http://www.tei-c.org/ns/1.0">
-          <constraintSpec ident="titlePart" scheme="schematron">
-            <constraint>
-              <sch:pattern>
-                <sch:rule context="tei:front//tei:titlePart">
-                  <sch:assert test="@type[1]='main'">
-                    titlePart must include a type attribute that is 'main'
-                  </sch:assert>
-                </sch:rule>
-              </sch:pattern>
-            </constraint>
-          </constraintSpec>
+        <!--schematron rule for the titlepart[@type] attribute -->
+        <constraintSpec ident="titlePart" scheme="schematron"
+          xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+          <desc> To encode zine, we decided that the front page should use the titlePage element
+            with docTitle and titlePart as descendant. The 1st titlePart element should always be
+            the main part of the title, so this rule verify that the @type of titlepart is equal to
+            main.</desc>
+          <constraint>
+            <sch:pattern>
+              <sch:rule context="tei:docTitle">
+                <sch:assert test="tei:titlePart[1][@type='main']"> The attribut of the first title
+                  must be "main" </sch:assert>
+              </sch:rule>
+            </sch:pattern>
+          </constraint>
+        </constraintSpec>
+
+        <!-- ALIGNEMENT SECTION BETWEEN ELEMENT WITH THE SAME RULES -->
+        <!-- this section is a repetitive section so that div2, p, titlePage, titlePart use the same rules as div1 -->
+
+        <!-- div2 alignement on div1 -->
+        <elementSpec ident="div2" mode="change">
+          <desc>This rule align the div2 element with the rules for div1 element</desc>
+          <attList>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <div2 n="8" rendition="printed" letter_color="black" material="paper"
+                material_color="white">
+                <p>morganstern.33 on <orgName>Signal</orgName></p>
+                <p source="ladyfingerpress.tumbler.com">ladyfingerpress.tumbler.com</p>
+              </div2>
+            </egXML>
+          </exemplum>
+        </elementSpec>
+
+        <!-- titlePart alignement on div1 and schematron rule for the @type attribute -->
+        <elementSpec ident="titlePart" mode="change"
+          xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+          <attList>
+            <attDef ident="type" mode="change" usage="req">
+              <valList type="closed" mode="change">
+                <valItem mode="delete" ident="alt"/>
+                <valItem mode="delete" ident="short"/>
+                <valItem mode="delete" ident="desc"/>
+              </valList>
+            </attDef>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <docTitle>
+                <titlePart type="main" rend="purple_ink white_paper" rendition="manuscript">The
+                  president is Gone</titlePart>
+                <titlePart type="sub" rend="black ink white_paper" rendition="manuscript">And other
+                  notes<lb/>from the future</titlePart>
+              </docTitle>
+            </egXML>
+          </exemplum>
+        </elementSpec>
+
+        <!-- titlePage alignement on div1 -->
+        <elementSpec ident="titlePage" mode="change">
+          <desc>In the case of the front page, the div1 element is not required because of the
+            existence of the titlePage element. This rule align the titlePage element with the rule
+            for the div1 element</desc>
+          <attList>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <titlePage type="titlepage" n="1" rendition="manuscript"> ... </titlePage>
+            </egXML>
+          </exemplum>
+        </elementSpec>
+
+        <!-- p alignement on div1 -->
+        <elementSpec ident="p" mode="change">
+          <desc>This rule align the p element with the div1 element</desc>
+          <attList>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <div1 n="5" rendition="manuscript">
+                <!-- Here the color change on the same page, so I used my rend attribute on every paragraphe-->
+                <p letter_color="purple" material="paper" material_color="pink"><lb/>So we got rid
+                  of <lb/>the corporations. <lb/>That's right.</p>
+              </div1>
+            </egXML>
+          </exemplum>
+        </elementSpec>
+
+        <!-- docAuthor alignement on div1 -->
+        <elementSpec ident="docAuthor" mode="change">
+          <desc>This rule align the docAuthor element with the div1 element</desc>
+          <attList>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <docAuthor letter_color="black" material="paper" material_color="white"
+                rend="black ink white_paper">
+                <persName>Angélica</persName>
+              </docAuthor>
+            </egXML>
+          </exemplum>
+        </elementSpec>
+
+        <!-- docDate alignement on div1 -->
+        <elementSpec ident="docDate" mode="change">
+          <desc>This rule align the docDate element with the div1 element</desc>
+          <attList>
+            <attDef ident="rendition" usage="opt" mode="change">
+              <valList type="closed" mode="replace">
+                <valItem ident="manuscript">
+                  <desc>A document written by hand or typewritten. Optional if needed to be on a
+                    lower level</desc>
+                </valItem>
+                <valItem ident="printed">
+                  <desc>A document mechanically printed or reproduced in some indirect or automated
+                    way. Optional if needed to be on a lower level</desc>
+                </valItem>
+              </valList>
+            </attDef>
+            <attDef ident="letter_color" usage="opt" mode="add">
+              <desc>Specifies the color of an element.</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+            <attDef ident="material_color" usage="opt" mode="add">
+              <desc>Specifies the material of an element</desc>
+              <datatype>
+                <dataRef key="teidata.text"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <exemplum>
+            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+              <docDate letter_color="black" material="paper" material_color="white"
+                rend="black ink white_paper">2023</docDate>
+            </egXML>
+          </exemplum>
         </elementSpec>
 
       </schemaSpec>

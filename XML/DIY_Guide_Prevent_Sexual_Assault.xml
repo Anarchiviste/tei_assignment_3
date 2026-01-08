@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-model href="../out/tei_zine_minimal.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-
-<!DOCTYPE TEI [<!ENTITY List_Type SYSTEM 'List_type.xml'>]>
-
+<?xml-model href="../out/tei_zine_minimal.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="eng">
     <teiHeader>
         <fileDesc>
@@ -47,7 +45,7 @@
                     <msIdentifier
                         source="https://archive.org/details/DiyGuideToPreventingSexualAssault/mode/2up">
                         <repository>Internet Archive</repository>
-                        <idno>ark:/13960/t75t76r2h </idno>
+                        <idno>ark:/13960/t75t76r2h</idno>
                     </msIdentifier>
                 </msDesc>
             </sourceDesc>
@@ -56,8 +54,8 @@
 
     <text>
         <front>
-            <titlePage type="titlepage" n="1" rendition="printed">
-                <docTitle rend="black_ink white_background">
+            <titlePage type="titlepage" n="1" rendition="printed" letter_color="black" material="paper" material_color="white">
+                <docTitle>
                     <titlePart type="main">A d.i.y guide to <lb/>preventing sexual
                         <lb/>assault</titlePart>
                 </docTitle>
@@ -70,28 +68,29 @@
             </titlePage>
         </front>
         <body>
-            <div1 n="1">
-                <quote rendition="printed" rend="black_ink white_background">"Once a girl knows I'm
+            <div1 n="2" rendition="printed" letter_color="black" material="paper" material_color="white">
+                <quote>"Once a girl knows I'm
                     going to <lb/>listen to a <emph>no</emph>, she knows I'm <lb/>going to listen a
                         <emph>yes</emph>, too. <lb/>That <emph>yes</emph> is a really nice thing
                     <lb/>to hear when she means it. Not <lb/>just about sex...About
                     <lb/>anything."</quote>
-                <div2>
+                <div2 material_color="black" material="photographic paper">
                     <figure>
                         <figDesc>A black and white printed picture of a young man</figDesc>
                     </figure>
                 </div2>
-                <trailer rendition="manuscript" rend="black_ink white_background"> It is up <lb/>to
+                <div2 rendition="manuscript" letter_color="black" material_color="white" material="paper">
+                    <p>It is up <lb/>to
                     each of us <lb/>to prevent <lb/>sexual <lb/>assault <lb/>in our
-                    <lb/>community</trailer>
+                    <lb/>community</p>
+                </div2>
             </div1>
-            <div1 n="3" rendition="manuscript" rend="black_ink white_background">
+            <div1 n="3" rendition="manuscript"  letter_color="black" material="paper" material_color="white">
                 <head>Help a survivor</head>
                 <list>
-                    <!-- Item are an automatic line reset so I didn't use <lb/> at the beginning of an item -->
                     <item>Believe what your friend is telling you.</item>
-                    <item>Dont pressure or force them to do <lb/>anything. They need to feel they are <lb/>in
-                        charge of decisions.</item>
+                    <item>Dont pressure or force them to do <lb/>anything. They need to feel they
+                        are <lb/>in charge of decisions.</item>
                     <item>Tell your friend that the rape is <emph>NOT</emph>
                         <lb/>their fault. Do not blame your friend <lb/>for what happened.</item>
                     <item>Don't question their behavior or <lb/>reasons.</item>
@@ -108,7 +107,7 @@
                     </address> Make your community aware of <lb/>the resources in your area.
                 </trailer>
             </div1>
-            <div1 n="4" rendition="printed" rend="black_ink white_background">
+            <div1 n="4" rendition="printed"  letter_color="black" material="paper" material_color="white">
                 <head>What to do if... <lb/>you or a friend are <lb/>sexually assaulted</head>
                 <list>
                     <item>Go to a safe place. With people <lb/>you feel comfortable with.</item>
@@ -120,13 +119,13 @@
                         <lb/>report.</item>
                     <item>Utilize the resources in your <lb/>community to help you cope with the
                         <lb/>assault.</item>
-                    <item>Remember ! The rapist is entirely responsible <lb/>for a rape. A survivor <lb/>is
-                        never at fault or to blame, <lb/>regardless of the situation.</item>
-                    <item>If your friend has been assaulted, <lb/>stand by them, listen and do anything
-                        <lb/>you can to help.</item>
+                    <item>Remember ! The rapist is entirely responsible <lb/>for a rape. A survivor
+                        <lb/>is never at fault or to blame, <lb/>regardless of the situation.</item>
+                    <item>If your friend has been assaulted, <lb/>stand by them, listen and do
+                        anything <lb/>you can to help.</item>
                 </list>
             </div1>
-            <div1 n="5" rendition="manuscript" rend="black_ink white_background">
+            <div1 n="5" rendition="manuscript" letter_color="black" material="paper" material_color="white">
                 <p>Spread equality !</p>
                 <div2>
                     <figure>
@@ -135,7 +134,7 @@
                     </figure>
                 </div2>
             </div1>
-            <div1 n="6" rendition="printed" rend="black_ink white_background">
+            <div1 n="6" rendition="printed" letter_color="black" material="paper" material_color="white">
                 <div2>
                     <head>Take care of yourself</head>
                     <p><lb/>- Communicate with your partner. Ask <lb/> questions to make sure the
@@ -179,40 +178,38 @@
                     </figure>
                 </div2>
             </div1>
-            <div1 n="7" rendition="printed" rend="black_ink white_background">
+        </body>
+        <back>
+            <div1 n="7" rendition="printed" letter_color="black" material="paper" material_color="white">
                 <div2>
-                    <div3>
-                        <head>WHAT IS SEXUAL ASSAULT ?</head>
-                        <p>Hearsay and speculation about date rape and sexual assault</p>
-                        <figure>
-                            <figDesc>3 pictures of 3 youngs men, anonimized by a black bar on their
-                                eyes and quotes of them under each pictures.</figDesc>
-                        </figure>
-                        <quote><lb/>Some guys get loaded <lb/>and take advantage of <lb/>girls. Then
-                            say, <lb/><quote>We were drunk, what's <lb/> the big deal
-                            ?</quote></quote>
-                        <quote><lb/>A friend of mine <lb/>sexually assaulted <lb/>someone, and I
-                            feel <lb/> really betrayed- I <lb/>mean who can I <lb/>trust ?</quote>
-                        <quote><lb/>When I hear about a rape close to me, I <lb/> feel powerless and
-                            <lb/>stunned. I wonder if <lb/>I could have done anything to prevent
-                            <lb/>it.</quote>
-                    </div3>
-                    <div3>
-                        <head>HERE'S THE FACTS ...</head>
-                        <p><lb/><emph>What is sexual Assault ?</emph>
-                            <lb/>When .</p>
-                        <p><lb/><emph>Whatg is Date or Acquaintance Rape?</emph>
-                            <lb/>When someone you know or are on a <lb/>date with forces you to have
-                            sexual <lb/>contact or intercourse.</p>
-                        <p><lb/>Consent is ... <lb/>Giving your okay, verbally and
-                            unimpei<caesura/>red (IE : <emph>NOT</emph> high or drunk) with full
-                            awareness of your surroundings is <lb/>consent. Forcing or coercing
-                            someone <lb/>into sexual activity or engaging in a <lb/>sexual act with
-                            someone who is high,<lb/>drunk, passed out,or unable to give
-                            <lb/>consent is rape.</p>
-                    </div3>
+                    <head>WHAT IS SEXUAL ASSAULT ?</head>
+                    <p>Hearsay and speculation about date rape and sexual assault</p>
+                    <figure>
+                        <figDesc>3 pictures of 3 youngs men, anonimized by a black bar on their eyes
+                            and quotes of them under each pictures.</figDesc>
+                    </figure>
+                    <quote><lb/>Some guys get loaded <lb/>and take advantage of <lb/>girls. Then
+                        say, <lb/><quote>We were drunk, what's <lb/> the big deal ?</quote></quote>
+                    <quote><lb/>A friend of mine <lb/>sexually assaulted <lb/>someone, and I feel
+                        <lb/> really betrayed- I <lb/>mean who can I <lb/>trust ?</quote>
+                    <quote><lb/>When I hear about a rape close to me, I <lb/> feel powerless and
+                        <lb/>stunned. I wonder if <lb/>I could have done anything to prevent
+                        <lb/>it.</quote>
+                </div2>
+                <div2>
+                    <head>HERE'S THE FACTS ...</head>
+                    <p><lb/><emph>What is sexual Assault ?</emph>
+                        <lb/>When .</p>
+                    <p><lb/><emph>Whatg is Date or Acquaintance Rape?</emph>
+                        <lb/>When someone you know or are on a <lb/>date with forces you to have
+                        sexual <lb/>contact or intercourse.</p>
+                    <p><lb/>Consent is ... <lb/>Giving your okay, verbally and unimpei<caesura/>red
+                        (IE : <emph>NOT</emph> high or drunk) with full awareness of your
+                        surroundings is <lb/>consent. Forcing or coercing someone <lb/>into sexual
+                        activity or engaging in a <lb/>sexual act with someone who is
+                        high,<lb/>drunk, passed out,or unable to give <lb/>consent is rape.</p>
                 </div2>
             </div1>
-        </body>
+        </back>
     </text>
 </TEI>
