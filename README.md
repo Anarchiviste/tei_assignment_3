@@ -16,6 +16,7 @@ My assignment II ended up with the use of workaround to counter somes limitation
 1) I created a external list with inside two entity, printed and manuscript, that was used to identify is a piece of text was printed or handwritten.
 
 base tei encoding exemple
+
 ''' xml
 <div1 n="5" rendition="#manuscript" rend="black_ink white_background">
                 <p>Spread equality !</p>
