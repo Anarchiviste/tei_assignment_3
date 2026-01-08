@@ -44,3 +44,4 @@ Here is the new code for the same exemple :
   </div2>
 </div1>
 ```
+The @rendition attribute is still used, but now the manuscript and printed values are rules coded in the odd. As they are rules, there is no need for an external authority file, and the values set for @rendition is now closed only for this two values.
