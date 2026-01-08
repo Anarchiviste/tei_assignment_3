@@ -180,7 +180,7 @@
         </constraintSpec>
 
         <!-- ALIGNEMENT SECTION BETWEEN ELEMENT WITH THE SAME RULES -->
-        <!-- this section is a repetitive section so that div2, p, titlePage, titlePart use the same rules as div1 -->
+        <!-- this section is a repetitive section so that div2, p, titlePage, titlePart, docAuthor and docDate use the same rules as div1 -->
 
         <!-- div2 alignement on div1 -->
         <elementSpec ident="div2" mode="change">
