@@ -17,7 +17,7 @@ My assignment II ended up with the use of workaround to counter somes limitation
 
 base tei encoding exemple
 
-''' xml
+```xml
 <div1 n="5" rendition="#manuscript" rend="black_ink white_background">
                 <p>Spread equality !</p>
                 <div2>
@@ -27,5 +27,4 @@ base tei encoding exemple
                     </figure>
                 </div2>
             </div1>
-
-'''
+```
