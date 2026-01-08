@@ -1,4 +1,4 @@
-# TEI Assignment III
+# TEI ODD stylesheet for anglo-saxon fanzine encoding.
 
 Here is the link to my two previous assignment.
 - https://github.com/Anarchiviste/evalXML.git
