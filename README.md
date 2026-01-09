@@ -28,3 +28,4 @@ This time I used some generative IA to debug a problem with schematron.
   - tei_zine_minimal.rng
 - tei_zine_minimal.html : the schema documentation for the rng
 - tei_zine_minimal.odd : the master file that produce the rng and html output
+- reflexive_note.md : a 3OO word note on previous iteration and odd customisation practice.
